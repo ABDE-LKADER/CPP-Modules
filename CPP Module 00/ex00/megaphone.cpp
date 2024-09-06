@@ -1,19 +1,14 @@
 # include <iostream>
 
-using namespace std;
-
 int	main(int ac, char **av)
 {
-	int		row;
-	int		index;
-
 	if (ac == 1)
-		cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	for (row = 1; row < ac; row++)
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+	for (int row = 1; row < ac; row++)
 	{
-		for (index = 0; av[row][index]; index++)
-			cout << (char)toupper(av[row][index]);
+		for (int index = 0; av[row][index]; index++)
+			std::cout << (char)toupper(av[row][index]);
 	}
-	cout << endl;
+	std::cout << std::endl;
 	return (0);
 }
