@@ -1,18 +1,20 @@
-NAME	=		megaphone
+NAME		=		PhoneBook
 
-SRCS	=		megaphone.cpp
-OBJS	=		$(SRCS:.cpp=.o)
+SRCS		=		Account.cpp tests.cpp
+OBJS		=		$(SRCS:.cpp=.o)
 
-CC		=		c++
-FLAGS	=		-Wall -Wextra -Werror
-RM		=		rm -fr
+HEADERS		=		Account.hpp
+
+CC			=		c++
+FLAGS		=		-Wall -Wextra -Werror -std=c++98
+RM			=		rm -fr
 
 all:	$(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(FLAGS) $^ -o $(NAME)
 
-$(OBJS): %.o: %.cpp
+$(OBJS): %.o: %.cpp $(HEADERS)
 	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
