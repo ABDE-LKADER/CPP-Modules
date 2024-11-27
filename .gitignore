@@ -1,2 +1,2 @@
 *.o
-.log
+.DS_store

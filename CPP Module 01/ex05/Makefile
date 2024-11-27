@@ -1,9 +1,9 @@
-NAME		=		Account
+NAME		=		Harl
 
-SRCS		=		Account.cpp tests.cpp
+SRCS		=		main.cpp Harl.cpp
 OBJS		=		$(SRCS:.cpp=.o)
 
-HEADERS		=		Account.hpp
+HEADERS		=		Harl.hpp
 
 CC			=		c++
 FLAGS		=		-Wall -Wextra -Werror -std=c++98

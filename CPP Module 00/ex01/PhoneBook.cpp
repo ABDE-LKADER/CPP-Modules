@@ -1,12 +1,9 @@
-#include "PhoneBook.hpp"
+#include "main.hpp"
 
-PhoneBook::PhoneBook(void) { this->index = 0; this->oldest = 1; }
+PhoneBook::PhoneBook(void) { index = 0; oldest = 1; }
 
-PhoneBook::~PhoneBook(void) { }
-
-bool	PhoneBook::validFormat(const std::string Number, char mode)
+bool	PhoneBook::validFormat(std::string const &Number, char const &mode)
 {
-	const std::string	oModes = "fln";
 	const std::string	validNums = " -0123456789";
 	const std::string	validNames = " ._-ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'";
 
@@ -19,7 +16,7 @@ bool	PhoneBook::validFormat(const std::string Number, char mode)
 	return (true);
 }
 
-void	PhoneBook::addField(const std::string message, char mode)
+void	PhoneBook::addField(std::string const &message, char const &mode)
 {
 	std::string	Value;
 	std::string	newMess;
@@ -31,21 +28,21 @@ void	PhoneBook::addField(const std::string message, char mode)
 		getline(std::cin, Value);
 		if (std::cin.eof())
 			break ;
-		if (Value.empty() || !this->validFormat(Value, mode))
+		if (Value.empty() || !validFormat(Value, mode))
 		{
 			newMess = "  The " + message;
 			if (Value.empty()) newMess += " is Required";
 			else newMess += " is Invalid";
 			continue ;
 		}
-		this->Phones[index].setatt(Value, mode);
+		Phones[index].setatt(Value, mode);
 		break ;
 	}
 }
 
 void	PhoneBook::addContact(void)
 {
-	if (this->oldest == 0)
+	if (oldest == 0)
 		std::cout << std::endl << ISFULL << std::endl;
 	std::cout << std::endl;
 	addField("first name", 'f');
@@ -54,11 +51,11 @@ void	PhoneBook::addContact(void)
 	addField("phone number", 'p');
 	addField("darkest secret", 'd');
 	std::cout << std::endl;
-	this->index = (this->index + 1) % 8;
-	this->oldest = this->index;
+	index = (index + 1) % 8;
+	oldest = index;
 }
 
-void	PhoneBook::printRow(std::string Value, short mode)
+void	PhoneBook::printRow(std::string const &Value, short const &mode)
 {
 	if (Value.length() > 10)
 		std::cout << std::right << std::setw(10) << Value.substr(0, 9) + ".";
@@ -70,7 +67,7 @@ void	PhoneBook::printRow(std::string Value, short mode)
 void	PhoneBook::drawTable(void)
 {
 	std::cout << std::endl;
-	if (!this->Phones[0].isEmpty())
+	if (!Phones[0].isEmpty())
 	{
 		printRow("Index", pipe);
 		printRow("First Name", pipe);
@@ -78,11 +75,11 @@ void	PhoneBook::drawTable(void)
 		printRow("Nickname", line);
 		for (short index = 0; index < 8; index++)
 		{
-			if (this->Phones[index].isEmpty()) break ;
+			if (Phones[index].isEmpty()) break ;
 			std::cout << std::right << std::setw(10) << index + 1 << " | ";
-			printRow(this->Phones[index].getatt('f'), pipe);
-			printRow(this->Phones[index].getatt('l'), pipe);
-			printRow(this->Phones[index].getatt('n'), line);
+			printRow(Phones[index].getatt('f'), pipe);
+			printRow(Phones[index].getatt('l'), pipe);
+			printRow(Phones[index].getatt('n'), line);
 		}
 	}
 	else std::cout << EMPTY << std::endl;
@@ -95,8 +92,8 @@ void	PhoneBook::searchIn(void)
 	std::string			Value;
 	std::stringstream	toIndex;
 
-	this->drawTable();
-	if (!this->Phones[0].isEmpty())
+	drawTable();
+	if (!Phones[0].isEmpty())
 	{
 		std::cout << SELECT;
 		getline(std::cin, Value);
@@ -104,9 +101,9 @@ void	PhoneBook::searchIn(void)
 		toIndex >> index;
 		if (Value.length() == 1 && !std::cin.eof() && index > 0 && index < 10)
 		{
-			if (this->Phones[index - 1].isEmpty())
+			if (Phones[index - 1].isEmpty())
 				std::cout << ENTRY + Value + "] is blank." << std::endl;
-			else this->Phones[index - 1].showContact();
+			else Phones[index - 1].showContact();
 		}
 		else if (!std::cin.eof())
 			std::cout << ">  Invalid index: [" + Value + RANGE << std::endl;

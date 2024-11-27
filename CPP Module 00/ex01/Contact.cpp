@@ -2,37 +2,37 @@
 
 bool	Contact::isEmpty(void) const
 {
-	if (this->firstName.empty())
+	if (firstName.empty())
 		return (true);
 	return (false);
 }
 
-void	Contact::setatt(std::string& Value, char mode)
+void	Contact::setatt(std::string const &Value, char const &mode)
 {
-	if (mode == 'f') this->firstName = Value;
-	else if (mode == 'l') this->lastName = Value;
-	else if (mode == 'n') this->nickName = Value;
-	else if (mode == 'p') this->phoneNumber = Value;
-	else if (mode == 'd') this->darkestSecret = Value;
+	if (mode == 'f') firstName = Value;
+	else if (mode == 'l') lastName = Value;
+	else if (mode == 'n') nickName = Value;
+	else if (mode == 'p') phoneNumber = Value;
+	else if (mode == 'd') darkestSecret = Value;
 }
 
-std::string	Contact::getatt(char mode) const
+std::string	Contact::getatt(char const &mode) const
 {
-	if (mode == 'f') return (this->firstName);
-	else if (mode == 'l') return (this->lastName);
-	else if (mode == 'n') return (this->nickName);
-	else if (mode == 'p') return (this->phoneNumber);
-	else return (this->darkestSecret);
+	if (mode == 'f') return (firstName);
+	else if (mode == 'l') return (lastName);
+	else if (mode == 'n') return (nickName);
+	else if (mode == 'p') return (phoneNumber);
+	else return (darkestSecret);
 }
 
 void		Contact::showContact(void)
 {
 	std::cout << std::endl;
 	std::cout << "\tContact details: " << std::endl;
-	std::cout << "\t  First Name: " << "[" + this->firstName + "]" << std::endl;
-	std::cout << "\t  Last Name: " << "[" + this->lastName + "]" << std::endl;
-	std::cout << "\t  Nickname: " << "[" + this->nickName + "]" << std::endl;
-	std::cout << "\t  Phone Number: " << "[" + this->phoneNumber + "]" << std::endl;
-	std::cout << "\t  Darkest Secret: " << "[" + this->darkestSecret + "]" << std::endl;
+	std::cout << "\t  First Name: " << "[" + firstName + "]" << std::endl;
+	std::cout << "\t  Last Name: " << "[" + lastName + "]" << std::endl;
+	std::cout << "\t  Nickname: " << "[" + nickName + "]" << std::endl;
+	std::cout << "\t  Phone Number: " << "[" + phoneNumber + "]" << std::endl;
+	std::cout << "\t  Darkest Secret: " << "[" + darkestSecret + "]" << std::endl;
 	std::cout << std::endl;
 }

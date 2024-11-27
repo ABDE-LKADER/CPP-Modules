@@ -1,23 +1,21 @@
 #ifndef PHONEBOOK_H
 # define PHONEBOOK_H
 
-#include "main.hpp"
 #include "Contact.hpp"
 
 class PhoneBook
 {
 	public:
 		PhoneBook();
-		~PhoneBook();
 		void	searchIn(void);
 		void	addContact(void);
 	private:
 		short			index;
 		short			oldest;
 		void			drawTable(void);
-		void			printRow(std::string Value, short mode);
-		void			addField(const std::string message, char mode);
-		bool			validFormat(std::string	Number, char mode);
+		void			printRow(std::string const &Value, short const &mode);
+		void			addField(std::string const &message, char const &mode);
+		bool			validFormat(std::string const &Number, char const &mode);
 		Contact			Phones[8];
 };
 

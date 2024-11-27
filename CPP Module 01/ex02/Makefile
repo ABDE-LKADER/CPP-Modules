@@ -1,9 +1,9 @@
-NAME		=		Account
+NAME		=		Brain
 
-SRCS		=		Account.cpp tests.cpp
+SRCS		=		main.cpp
 OBJS		=		$(SRCS:.cpp=.o)
 
-HEADERS		=		Account.hpp
+HEADERS		=		
 
 CC			=		c++
 FLAGS		=		-Wall -Wextra -Werror -std=c++98

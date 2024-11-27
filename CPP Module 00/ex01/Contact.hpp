@@ -1,15 +1,16 @@
 #ifndef CONTACT_H
 # define CONTACT_H
 
-#include "main.hpp"
+#include <sstream>
+#include <iostream>
 
 class Contact
 {
 	public:
-		std::string	getatt(char mode) const;
+		std::string	getatt(char const &mode) const;
 		void		showContact(void);
 		bool		isEmpty(void) const;
-		void		setatt(std::string& Value, char mode);
+		void		setatt(std::string const &Value, char const &mode);
 	private:
 		std::string	firstName;
 		std::string lastName;

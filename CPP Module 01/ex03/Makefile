@@ -1,9 +1,9 @@
-NAME		=		Account
+NAME		=		Attack
 
-SRCS		=		Account.cpp tests.cpp
+SRCS		=		main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 OBJS		=		$(SRCS:.cpp=.o)
 
-HEADERS		=		Account.hpp
+HEADERS		=		Weapon.hpp HumanA.hpp HumanB.hpp
 
 CC			=		c++
 FLAGS		=		-Wall -Wextra -Werror -std=c++98
