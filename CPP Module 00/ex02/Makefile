@@ -5,7 +5,7 @@ OBJS		=		$(SRCS:.cpp=.o)
 
 HEADERS		=		Account.hpp
 
-CC			=		c++
+CC			=		gcc
 FLAGS		=		-Wall -Wextra -Werror -std=c++98
 RM			=		rm -fr
 
