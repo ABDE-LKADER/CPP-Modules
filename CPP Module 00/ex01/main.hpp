@@ -12,7 +12,7 @@
   2. SEARCH – Search and view an existing contact.\n\
   3. EXIT – Exit the program.\n\n"
 
-# define RANGE "] Choose a number between 1 and 9."
+# define RANGE "] Choose a number between 1 and 8."
 # define ENTRY ">  The contact entry at index ["
 # define INVALID " <Please enter a valid option>"
 # define SELECT " Select contact index for details: "

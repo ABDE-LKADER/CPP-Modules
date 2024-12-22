@@ -99,7 +99,7 @@ void	PhoneBook::searchIn(void)
 		getline(std::cin, Value);
 		toIndex << Value;
 		toIndex >> index;
-		if (Value.length() == 1 && !std::cin.eof() && index > 0 && index < 10)
+		if (Value.length() == 1 && !std::cin.eof() && index > 0 && index < 9)
 		{
 			if (Phones[index - 1].isEmpty())
 				std::cout << ENTRY + Value + "] is blank." << std::endl;
