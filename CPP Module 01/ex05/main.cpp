@@ -1,12 +1,13 @@
 #include "Harl.hpp"
 
-int main( int ac, char **av )
-{
-	Harl			harl;
-	std::string		level;
+int	main() {
+	Harl	harl;
 
-	if (ac != 2)
-		return (1);
-	level.assign(av[1]);
-	harl.complain(level);
+	harl.complain("DEBUG");
+	harl.complain("INFO");
+	harl.complain("WARNING");
+	harl.complain("ERROR");
+	harl.complain("HARL"); 
+
+	return 0;
 }
