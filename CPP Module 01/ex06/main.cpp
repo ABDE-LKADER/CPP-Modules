@@ -2,15 +2,14 @@
 
 static enHarl	level( std::string level )
 {
-	if (level.compare("DEBUG") == 0)
-		return DEBUG;
-	if (level.compare("INFO") == 0)
-		return INFO;
-	if (level.compare("WARNING") == 0)
-		return WARNING;
-	if (level.compare("ERROR") == 0)
-		return ERROR;
-	return NONE;
+	int			lvl;
+	std::string levels[4] = {
+		"DEBUG", "INFO", "WARNING", "ERROR"
+	};
+	for (lvl = 0; lvl < 4; lvl++)
+		if (level.compare(levels[lvl]) == 0)
+			break ;
+	return enHarl(lvl);
 }
 
 int	main( int ac, char **av) {
