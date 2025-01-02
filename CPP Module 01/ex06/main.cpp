@@ -16,7 +16,7 @@ int	main( int ac, char **av) {
 	Harl	harl;
 
 	if (ac != 2)
-		return 1;
+		return (1);
 
 	switch (level(av[1])) {
 	default:
@@ -31,5 +31,5 @@ int	main( int ac, char **av) {
 	case ERROR:
 		harl.complain("ERROR");
 	}
-	return 0;
+	return (0);
 }
