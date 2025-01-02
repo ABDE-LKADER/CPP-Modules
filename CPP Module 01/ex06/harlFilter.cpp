@@ -16,7 +16,7 @@ static enHarl	level( std::string level )
 int	main( int ac, char **av) {
 	Harl	harl;
 
-	if (ac != 2 && av)
+	if (ac != 2)
 		return 1;
 
 	switch (level(av[1])) {
