@@ -12,6 +12,7 @@ class Fixed
 		~Fixed( void );
 		Fixed( const Fixed &obj );
 		Fixed&	operator=( const Fixed &obj );
+		friend std::ostream&	operator<<( std::ostream &os, const Fixed &obj );
 		int		getRawBits( void ) const;
 		void	setRawBits( int const raw );
 		float	toFloat( void ) const;
@@ -20,5 +21,6 @@ class Fixed
 		int					value;
 		static int const	nBits = 8;
 };
+
 
 #endif
