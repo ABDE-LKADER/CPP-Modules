@@ -2,25 +2,25 @@
 
 ScavTrap::ScavTrap( void ) { }
 
-// ScavTrap::ScavTrap( std::string const &uName ) : name(uName) {
-// 	std::cout << "ScavTrap " << name << " created!" << std::endl;
-// 	hitPoints = 10;
-// 	energyPoints = 10;
-// 	attackDamage = 0;
-// }
+ScavTrap::ScavTrap( std::string const &uName ) : ClapTrap(uName) {
+	std::cout << "ScavTrap " << name << " created!" << std::endl;
+	hitPoints = 100;
+	energyPoints = 50;
+	attackDamage = 20;
+}
 
-ScavTrap::ScavTrap( const ScavTrap &obj ) { *this = obj; }
+ScavTrap::ScavTrap( const ScavTrap &obj ) : ClapTrap(obj) { *this = obj; }
 
 ScavTrap&	ScavTrap::operator=( const ScavTrap &obj ) {
-	// name = obj.name;
-	// hitPoints = obj.hitPoints;
-	// energyPoints = obj.energyPoints;
-	// attackDamage = obj.attackDamage;
+	name = obj.name;
+	hitPoints = obj.hitPoints;
+	energyPoints = obj.energyPoints;
+	attackDamage = obj.attackDamage;
 	return (*this);
 }
 
 ScavTrap::~ScavTrap( void ) {
-	// std::cout << "ScavTrap " << name << " destroyed!" << std::endl;
+	std::cout << "ScavTrap " << name << " destroyed!" << std::endl;
 }
 
 // void ScavTrap::attack( const std::string& target )
@@ -59,5 +59,5 @@ ScavTrap::~ScavTrap( void ) {
 // }
 
 void	ScavTrap::guardGate( void ) {
-	std::cout << "ScavTrap " << ", Gatekeeper mode!" << std::endl;
+	std::cout << "ScavTrap " << name << ", Gatekeeper mode!" << std::endl;
 }
