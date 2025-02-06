@@ -1,8 +1,8 @@
 #include "main.hpp"
 
-PhoneBook::PhoneBook(void) { index = 0; oldest = 1; }
+PhoneBook::PhoneBook( void ) { index = 0; oldest = 1; }
 
-bool	PhoneBook::validFormat(std::string const &Number, char const &mode)
+bool	PhoneBook::validFormat( std::string const &Number, char const &mode )
 {
 	const std::string	validNums = " -0123456789";
 	const std::string	validNames = " ._-ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'";
@@ -16,7 +16,7 @@ bool	PhoneBook::validFormat(std::string const &Number, char const &mode)
 	return (true);
 }
 
-void	PhoneBook::addField(std::string const &message, char const &mode)
+void	PhoneBook::addField( std::string const &message, char const &mode )
 {
 	std::string	Value;
 	std::string	newMess;
@@ -40,7 +40,7 @@ void	PhoneBook::addField(std::string const &message, char const &mode)
 	}
 }
 
-void	PhoneBook::addContact(void)
+void	PhoneBook::addContact( void )
 {
 	if (oldest == 0)
 		std::cout << std::endl << ISFULL << std::endl;
@@ -55,7 +55,7 @@ void	PhoneBook::addContact(void)
 	oldest = index;
 }
 
-void	PhoneBook::printRow(std::string const &Value, short const &mode)
+void	PhoneBook::printRow( std::string const &Value, short const &mode )
 {
 	if (Value.length() > 10)
 		std::cout << std::right << std::setw(10) << Value.substr(0, 9) + ".";
@@ -64,7 +64,7 @@ void	PhoneBook::printRow(std::string const &Value, short const &mode)
 	if (mode == line) std::cout << std::endl;
 }
 
-void	PhoneBook::drawTable(void)
+void	PhoneBook::drawTable( void )
 {
 	std::cout << std::endl;
 	if (!Phones[0].isEmpty())
@@ -86,7 +86,7 @@ void	PhoneBook::drawTable(void)
 	std::cout << std::endl;
 }
 
-void	PhoneBook::searchIn(void)
+void	PhoneBook::searchIn( void )
 {
 	short				index;
 	std::string			Value;
