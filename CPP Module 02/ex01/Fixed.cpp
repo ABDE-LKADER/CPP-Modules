@@ -4,11 +4,11 @@ Fixed::Fixed( void ) : value(0) {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed( int const num ) : value(num) {
+Fixed::Fixed( int const num ) : value(num << nBits) {
 	std::cout << "Int constructor called" << std::endl;
 }
 
-Fixed::Fixed( float const num ) : value(num) {
+Fixed::Fixed( float const num ) : value(roundf(num * (1 << nBits))) {
 	std::cout << "Float constructor called" << std::endl;
 }
 
@@ -41,9 +41,9 @@ void Fixed::setRawBits( int const raw ) {
 }
 
 float	Fixed::toFloat( void ) const {
-	return (value);
+	return ((float)value / (1 << nBits));
 }
 
 int	Fixed::toInt( void ) const {
-	return (value);
+	return (value >> nBits);
 }
