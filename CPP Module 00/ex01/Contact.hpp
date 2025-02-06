@@ -7,16 +7,16 @@
 class Contact
 {
 	public:
-		std::string	getatt(char const &mode) const;
-		void		showContact(void);
-		bool		isEmpty(void) const;
-		void		setatt(std::string const &Value, char const &mode);
+		const std::string	getatt(char const &mode) ;
+		void				showContact(void);
+		const bool			isEmpty(void);
+		void				setatt(std::string const &Value, char const &mode);
 	private:
-		std::string	firstName;
-		std::string lastName;
-		std::string nickName;
-		std::string	phoneNumber;
-		std::string	darkestSecret;
+		std::string			firstName;
+		std::string			lastName;
+		std::string			nickName;
+		std::string			phoneNumber;
+		std::string			darkestSecret;
 };
 
 #endif
