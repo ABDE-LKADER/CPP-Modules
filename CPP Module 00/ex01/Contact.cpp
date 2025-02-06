@@ -1,13 +1,13 @@
 #include "Contact.hpp"
 
-bool	Contact::isEmpty(void) const
+bool	Contact::isEmpty( void )
 {
 	if (firstName.empty())
 		return (true);
 	return (false);
 }
 
-void	Contact::setatt(std::string const &Value, char const &mode)
+void	Contact::setatt( std::string const &Value, char const &mode )
 {
 	if (mode == 'f') firstName = Value;
 	else if (mode == 'l') lastName = Value;
@@ -16,7 +16,7 @@ void	Contact::setatt(std::string const &Value, char const &mode)
 	else if (mode == 'd') darkestSecret = Value;
 }
 
-std::string	Contact::getatt(char const &mode) const
+const std::string	Contact::getatt( char const &mode )
 {
 	if (mode == 'f') return (firstName);
 	else if (mode == 'l') return (lastName);
@@ -25,7 +25,7 @@ std::string	Contact::getatt(char const &mode) const
 	else return (darkestSecret);
 }
 
-void		Contact::showContact(void)
+void		Contact::showContact( void )
 {
 	std::cout << std::endl;
 	std::cout << "\tContact details: " << std::endl;
