@@ -1,15 +1,15 @@
 #ifndef FIXED_H
 # define FIXED_H
 
-# include <iostream>
 # include <math.h>
+# include <iostream>
 
 class Fixed
 {
 	public:
 		Fixed( void );
 		Fixed( const Fixed & );
-		Fixed&	operator=( const Fixed & );
+		Fixed&				operator=( const Fixed & );
 		~Fixed( void );
 
 		Fixed( int const );
