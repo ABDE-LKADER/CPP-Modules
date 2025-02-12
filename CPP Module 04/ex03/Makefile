@@ -1,9 +1,9 @@
-NAME		=		Animal
+NAME		=		Interface
 
-SRCS		=		main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
+SRCS		=		AMateria.cpp Character.cpp Cure.cpp Ice.cpp main.cpp MateriaSource.cpp
 OBJS		=		$(SRCS:.cpp=.o)
 
-HEADERS		=		Animal.hpp Dog.hpp Cat.hpp WrongAnimal.hpp WrongCat.hpp
+HEADERS		=		AMateria.hpp Character.hpp Cure.hpp Ice.hpp ICharacter.hpp IMateriaSource.hpp MateriaSource.hpp
 
 CC			=		c++
 FLAGS		=		-Wall -Wextra -Werror -std=c++98

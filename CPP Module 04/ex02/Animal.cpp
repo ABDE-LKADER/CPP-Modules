@@ -17,7 +17,3 @@ Animal::~Animal( void ) {
 }
 
 std::string	Animal::getType( void ) const { return (type); }
-
-void	Animal::makeSound( void ) const {
-	std::cout << getType() << " make no sound! <Not-Defined>" << std::endl;
-}

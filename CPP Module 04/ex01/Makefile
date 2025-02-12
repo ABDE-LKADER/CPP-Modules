@@ -1,9 +1,9 @@
 NAME		=		Animal
 
-SRCS		=		main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
+SRCS		=		main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
 OBJS		=		$(SRCS:.cpp=.o)
 
-HEADERS		=		Animal.hpp Dog.hpp Cat.hpp WrongAnimal.hpp WrongCat.hpp
+HEADERS		=		Animal.hpp Dog.hpp Cat.hpp Brain.hpp
 
 CC			=		c++
 FLAGS		=		-Wall -Wextra -Werror -std=c++98

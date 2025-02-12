@@ -1,7 +1,7 @@
 #ifndef ANIMAL_HPP
 # define ANIMAL_HPP
 
-# include <iostream>
+# include "Brain.hpp"
 
 class Animal
 {
