@@ -16,22 +16,30 @@ Fixed&	Fixed::operator=( const Fixed& robj ) {
 }
 
 Fixed	Fixed::operator+( const Fixed& obj ) const {
-	Fixed	result(toFloat() + obj.toFloat());
+	Fixed	result;
+
+	result.setRawBits((getRawBits() + obj.getRawBits()) / (1 << nBits));
 	return (result);
 }
 
 Fixed	Fixed::operator-( const Fixed& obj ) const {
-	Fixed	result(toFloat() - obj.toFloat());
+	Fixed	result;
+
+	result.setRawBits((getRawBits() - obj.getRawBits()) / (1 << nBits));
 	return (result);
 }
 
 Fixed	Fixed::operator*( const Fixed& obj ) const {
-	Fixed	result(toFloat() * obj.toFloat());
+	Fixed	result;
+
+	result.setRawBits((getRawBits() * obj.getRawBits()) / (1 << nBits));
 	return (result);
 }
 
 Fixed	Fixed::operator/( const Fixed& obj ) const {
-	Fixed	result(toFloat() / obj.toFloat());
+	Fixed	result;
+
+	result.setRawBits((getRawBits() / obj.getRawBits()) / (1 << nBits));
 	return (result);
 }
 
