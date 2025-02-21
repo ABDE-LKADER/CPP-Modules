@@ -1,9 +1,9 @@
-NAME		=		Zombie
+NAME		=		Zombies
 
 SRCS		=		Zombie.cpp zombieHorde.cpp main.cpp
 OBJS		=		$(SRCS:.cpp=.o)
 
-HEADERS		=		Zombie.hpp
+HEADERS		=		Zombie.hpp main.cpp
 
 CC			=		c++
 FLAGS		=		-Wall -Wextra -Werror -std=c++98
@@ -24,3 +24,5 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
+
+.PHONY: clean

@@ -3,8 +3,9 @@
 
 # include <iostream>
 
-enum enHarl { DEBUG, INFO, WARNING, ERROR, NONE };
 # define UNKNOWN "[ Probably complaining about insignificant problems ]"
+
+enum enHarl { DEBUG, INFO, WARNING, ERROR, NONE };
 
 class Harl
 {

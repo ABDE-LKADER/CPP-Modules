@@ -1,8 +1,8 @@
-#include "main.hpp"
+# include "main.hpp"
 
 int		main( void )
 {
-	int		numZombies = 99;
+	int		numZombies = 9;
 	Zombie	*Zombies = zombieHorde(numZombies, "Zombieee");
 
 	for (int Num = 0; Num <= numZombies; Num++)

@@ -1,18 +1,18 @@
-#include "main.hpp"
+# include "main.hpp"
 
 int		main( void )
 {
-	Zombie	*Zombie1 = newZombie("Zombie1");
-	Zombie	*Zombie2 = newZombie("Zombie2");
-	Zombie	*Zombie3 = newZombie("Zombie3");
+	Zombie	*Zombie1 = newZombie("Ultra");
+	Zombie	*Zombie2 = newZombie("Booster");
+	Zombie	*Zombie3 = newZombie("Someone");
 
 	Zombie1->announce();
 	Zombie2->announce();
 	Zombie3->announce();
 
-	randomChump("Zombie4");
-	randomChump("Zombie5");
-	randomChump("Zombie6");
+	randomChump("Master");
+	randomChump("Soller");
+	randomChump("Sigma");
 
 	delete Zombie1;
 	delete Zombie2;

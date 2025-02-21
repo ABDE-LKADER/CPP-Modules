@@ -1,14 +1,18 @@
 #ifndef ZOMBIE_HPP
 # define ZOMBIE_HPP
 
-#include <iostream>
+# include <iostream>
 
 # define MESS ": BraiiiiiiinnnzzzZ..."
 
 class Zombie
 {
 	public:
+		Zombie( void );
 		~Zombie( void );
+
+		Zombie( std::string const & );
+
 		void		setZombie( std::string const & );
 		void		announce( void );
 	private:

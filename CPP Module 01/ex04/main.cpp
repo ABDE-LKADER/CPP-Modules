@@ -14,7 +14,7 @@ void	replace( char **av, std::string &buffer )
 	{
 		buffer.erase(pos, search.length());
 		buffer.insert(pos, replace);
-		pos = buffer.find(search);
+		pos = buffer.find(search, pos + replace.length());
 	}
 }
 
@@ -24,7 +24,7 @@ int	main( int ac, char **av )
 	std::ofstream	outfile;
 	std::string		buffer;
 
-	if (ac != 4)
+	if (ac != 4 || !*av[2])
 		return (1);
 	infile.open(av[1]);
 	if (infile.fail())
