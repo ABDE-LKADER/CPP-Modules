@@ -1,4 +1,4 @@
-#include "Contact.hpp"
+# include "Contact.hpp"
 
 bool	Contact::isEmpty( void )
 {

@@ -1,8 +1,8 @@
 #ifndef MAIN_H
 # define MAIN_H
 
-#include <iomanip>
-#include "PhoneBook.hpp"
+# include <iomanip>
+# include "PhoneBook.hpp"
 
 # define pipe 1
 # define line 2

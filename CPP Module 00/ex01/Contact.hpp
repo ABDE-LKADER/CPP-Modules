@@ -1,8 +1,8 @@
 #ifndef CONTACT_H
 # define CONTACT_H
 
-#include <sstream>
-#include <iostream>
+# include <sstream>
+# include <iostream>
 
 class Contact
 {
@@ -11,6 +11,7 @@ class Contact
 		void				showContact( void );
 		bool				isEmpty( void );
 		void				setatt( std::string const & , char const & );
+
 	private:
 		std::string			firstName;
 		std::string			lastName;

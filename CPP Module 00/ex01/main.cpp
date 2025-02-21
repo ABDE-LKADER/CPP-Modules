@@ -17,5 +17,5 @@ int	main(void)
 		else std::cout << INVALID << std::endl;
 	}
 	if (std::cin.eof()) std::cout << std::endl;
-	return (std::cout << EXITING << std::endl, true);
+	return (std::cout << EXITING << std::endl, 0);
 }

@@ -1,7 +1,7 @@
 #ifndef PHONEBOOK_H
 # define PHONEBOOK_H
 
-#include "Contact.hpp"
+# include "Contact.hpp"
 
 class PhoneBook
 {
@@ -9,6 +9,7 @@ class PhoneBook
 		PhoneBook( void );
 		void	searchIn( void );
 		void	addContact( void );
+
 	private:
 		short			index;
 		short			oldest;
