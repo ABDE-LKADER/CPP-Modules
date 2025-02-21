@@ -2,9 +2,9 @@
 
 Zombie* zombieHorde( int N, std::string name )
 {
-	Zombie *Zombies = new Zombie[N + 1];
+	Zombie *Zombies = new(std::nothrow) Zombie[N + 1];
 
-	for (int Num = 0; Num <= N; Num++)
-		Zombies[Num].setZombie(name);
+	for (int Num = 0; Zombies && Num <= N; Num++)
+		new (&Zombies[Num]) Zombie(name);
 	return (Zombies);
 }

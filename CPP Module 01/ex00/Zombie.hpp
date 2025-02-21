@@ -13,8 +13,8 @@ class Zombie
 
 		Zombie( std::string const & );
 
-		void		setZombie( std::string const & );
 		void		announce( void );
+
 	private:
 		std::string	name;
 };

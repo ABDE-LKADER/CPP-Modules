@@ -10,7 +10,7 @@ class HumanA
 		void			attack( void );
 
 	private:
-		Weapon			*weapon;
+		Weapon			&weapon;
 		std::string		name;
 };
 
