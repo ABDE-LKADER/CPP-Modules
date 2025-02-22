@@ -2,9 +2,9 @@
 
 int	main(void)
 {
-	Point	a(10, 10);
+	Point	a(0, 0);
 	Point	b(10, 10);
-	Point	c(20, 20);
+	Point	c(0, 20);
 	Point	point(1, 15);
 
 	if (bsp(a, b, c, point) == true)
