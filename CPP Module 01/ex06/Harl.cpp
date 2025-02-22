@@ -6,10 +6,10 @@ void	Harl::complain( std::string level )
 		"DEBUG", "INFO", "WARNING", "ERROR"
 	};
 	void (Harl::*ptrFun[4]) ( void ) = {
-		*ptrFun = &Harl::debug,
-		*(ptrFun + 1) = &Harl::info,
-		*(ptrFun + 2) = &Harl::warning,
-		*(ptrFun + 3) = &Harl::error
+		&Harl::debug,
+		&Harl::info,
+		&Harl::warning,
+		&Harl::error
 	};
 	for (int lvl = 0; lvl < 4; lvl++)
 		if (level.compare(levels[lvl]) == 0)
