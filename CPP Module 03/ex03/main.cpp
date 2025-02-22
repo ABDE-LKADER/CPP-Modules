@@ -4,8 +4,8 @@ int main() {
 	DiamondTrap diamondTrap("DPRIME");
 
 	diamondTrap.attack("DVIR");
-	diamondTrap.takeDamage(111);
-	diamondTrap.beRepaired(444);
+	diamondTrap.takeDamage(11);
+	diamondTrap.beRepaired(44);
 	diamondTrap.guardGate();
 	diamondTrap.beRepaired(22);
 	diamondTrap.takeDamage(80);

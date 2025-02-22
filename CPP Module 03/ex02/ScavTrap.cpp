@@ -1,9 +1,14 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap( void ) { }
+ScavTrap::ScavTrap( void ) : ClapTrap() {
+	std::cout << "ScavTrap " << name << " created!" << std::endl ;
+	hitPoints = 100;
+	energyPoints = 50;
+	attackDamage = 20;
+}
 
 ScavTrap::ScavTrap( std::string const &uName ) : ClapTrap(uName) {
-	std::cout << "ScavTrap " << name << " created!" << std::endl;
+	std::cout << "ScavTrap " << name << " created!" << std::endl ;
 	hitPoints = 100;
 	energyPoints = 50;
 	attackDamage = 20;
@@ -26,7 +31,7 @@ ScavTrap::~ScavTrap( void ) {
 void ScavTrap::attack( const std::string& target )
 {
 	std::cout << "ScavTrap ";
-	if (!energyPoints || hitPoints < 0) {
+	if (energyPoints == 0 || hitPoints == 0) {
 		std::cout << name << " can't attack" << std::endl;
 		return ;
 	}
@@ -36,6 +41,6 @@ void ScavTrap::attack( const std::string& target )
 } 	
 
 void	ScavTrap::guardGate( void ) {
-	if (hitPoints > 0)
+	if (hitPoints != 0)
 		std::cout << "ScavTrap " << name << " Gatekeeper mode !ON!" << std::endl;
 }

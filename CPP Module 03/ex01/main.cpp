@@ -4,8 +4,8 @@ int main() {
 	ScavTrap scavTrap("SPRIME");
 
 	scavTrap.attack("SVIR");
-	scavTrap.takeDamage(10);
-	scavTrap.beRepaired(8);
+	scavTrap.takeDamage(30);
+	scavTrap.beRepaired(9);
 	scavTrap.guardGate();
 	
 	return 0;

@@ -1,7 +1,7 @@
 #ifndef CLAPTRAP_HPP
 # define CLAPTRAP_HPP
 
-# include "iostream"
+# include <iostream>
 
 class ClapTrap
 {
@@ -16,11 +16,12 @@ class ClapTrap
 		void			attack( const std::string& );
 		void			takeDamage( unsigned int );
 		void			beRepaired( unsigned int );
+
 	protected:
 		std::string		name;
-		int				hitPoints;
-		int				energyPoints;
-		int				attackDamage;
+		unsigned int	hitPoints;
+		unsigned int	energyPoints;
+		unsigned int	attackDamage;
 };
 
 #endif

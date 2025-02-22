@@ -4,11 +4,11 @@ int main() {
 	FragTrap fragTrap("FPRIME");
 
 	fragTrap.attack("FVIR");
-	fragTrap.takeDamage(10);
-	fragTrap.beRepaired(8);
+	fragTrap.takeDamage(19);
+	fragTrap.beRepaired(19);
 	fragTrap.highFivesGuys();
-	fragTrap.beRepaired(8);
-	fragTrap.takeDamage(80);
+	fragTrap.beRepaired(19);
+	fragTrap.takeDamage(90);
 
 	return 0;
 }
