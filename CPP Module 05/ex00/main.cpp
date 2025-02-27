@@ -1,13 +1,19 @@
 # include "Bureaucrat.hpp"
 
 int main() {
-	try
-	{
-		Bureaucrat	bur;
-		std::cout << bur;
+	try {
+		Bureaucrat	two;
+		std::cout << two;
+
+		Bureaucrat	on("Muslim", 1);
+		std::cout << on;
+
+		Bureaucrat	one("Problem", 150);
+		one--;
+		std::cout << one;
 	}
 	catch ( std::exception &e ) {
-		std::cout << "Error Catched ;D" << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 	catch ( ... ) {
 		std::cout << "Error Catched :D" << std::endl;
