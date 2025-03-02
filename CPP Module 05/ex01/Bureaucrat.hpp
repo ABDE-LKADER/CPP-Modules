@@ -1,13 +1,7 @@
 #ifndef BUREACRAT_CPP
 # define BUREACRAT_CPP
 
-# include <iostream>
-# include <exception>
-# include <cstdlib>
-# include <ctime>
-
-# define MAX_GRADE 1
-# define MIN_GRADE 150
+# include "Form.hpp"
 
 class Bureaucrat
 {
@@ -23,6 +17,7 @@ class Bureaucrat
 
 		Bureaucrat		operator++( int );
 		Bureaucrat		operator--( int );
+		void			signForm( Form & );
 
 		class GradeTooLowException : public std::exception {
 			public: const char*	what() const throw();

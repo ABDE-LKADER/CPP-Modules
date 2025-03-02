@@ -1,22 +1,40 @@
 # include "Form.hpp"
+# include "Bureaucrat.hpp"
 
-Form::Form( void ) : name("Form"),
-	signGrade(0), execGrade(0) { }
+short	genGrade( void )
+{
+	std::srand(std::time(0));
+	return (std::rand() % 150 + 1);
+}
 
-Form::Form( const Form &obj ) : name("Form"),
-	signGrade(0), execGrade(0) { *this = obj; }
+Form::Form( void ) : name("Form"), approved(false),
+	signGrade(genGrade()), execGrade(genGrade()) { }
+
+Form::Form( const Form &obj ) : name(obj.name), approved(obj.approved),
+	signGrade(obj.signGrade), execGrade(obj.execGrade) { *this = obj; }
 
 Form&	Form::operator=( const Form &obj ) {
-	approved = obj.approved;
+	if (this != &obj)
+		approved = obj.approved;
 	return (*this);
 }
 
 Form::~Form( void ) { }
 
 void	Form::beSigned( const Bureaucrat &obj ) {
-	if (obj.getGrade() > this->getSingGrade())
+	if (approved == true)
+		
+	if (obj.getGrade() > getSingGrade())
 		throw GradeTooLowException();
 	approved = true;
+}
+
+const char*	Form::GradeTooLowException::what() const throw() {
+	return ("Error: Grade is too low.");
+}
+
+const char*	Form::GradeTooHighException::what() const throw() {
+	return ("Error: Grade is too high.");
 }
 
 std::ostream&	operator<<( std::ostream &out , const Form &obj ) {
@@ -33,10 +51,10 @@ bool	Form::getStatus( void ) const {
 	return (approved);
 }
 
-int	Form::getSingGrade( void ) const {
+short	Form::getSingGrade( void ) const {
 	return (signGrade);
 }
 
-int	Form::getExecGrade( void ) const {
+short	Form::getExecGrade( void ) const {
 	return (execGrade);
 }

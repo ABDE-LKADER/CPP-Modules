@@ -13,9 +13,9 @@ int main( void ) {
 		std::cout << one;
 	}
 	catch ( std::exception &e ) {
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 	catch ( ... ) {
-		std::cout << "Error Catched :D" << std::endl;
+		std::cerr << "Error Catched :D" << std::endl;
 	}
 }

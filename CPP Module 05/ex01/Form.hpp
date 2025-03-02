@@ -1,10 +1,15 @@
-#ifndef FORM_CPP
-# define FORM_CPP
+#ifndef FORM_HPP
+# define FORM_HPP
 
-# include "Bureaucrat.hpp"
+# include <iostream>
+# include <exception>
+# include <cstdlib>
+# include <ctime>
 
 # define MAX_GRADE 1
 # define MIN_GRADE 150
+
+short	genGrade( void );
 
 class Bureaucrat;
 
@@ -18,8 +23,8 @@ class Form
 
 		std::string			getName( void ) const;
 		bool				getStatus( void ) const;
-		int					getSingGrade( void ) const;
-		int					getExecGrade( void ) const;
+		short				getSingGrade( void ) const;
+		short				getExecGrade( void ) const;
 
 		void				beSigned( const Bureaucrat & );
 
@@ -34,8 +39,8 @@ class Form
 	private:
 		const std::string	name;
 		bool				approved;
-		const int			signGrade;
-		const int			execGrade;
+		const short			signGrade;
+		const short			execGrade;
 };
 
 std::ostream&	operator<<( std::ostream & , const Form & );

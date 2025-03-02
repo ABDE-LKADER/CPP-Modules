@@ -1,19 +1,28 @@
 # include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat( void ) : name("Anonymous") {
-	std::srand(std::time(0));
-	grade = std::rand() % 150 + 1;
-}
+Bureaucrat::Bureaucrat( void ) : name("Anonymous"), grade(genGrade()) { }
 
 Bureaucrat::Bureaucrat( const Bureaucrat &obj ) { *this = obj; }
 
 Bureaucrat&	Bureaucrat::operator=( const Bureaucrat &obj ) {
-	name = obj.name;
-	grade = obj.grade;
+	name = obj.name, grade = obj.grade;
 	return (*this);
 }
 
 Bureaucrat::~Bureaucrat( void ) { }
+
+void	Bureaucrat::signForm( Form &form ) {
+	try {
+		form.beSigned(*this);
+		std::cout << getName() << " signed " << form.getName() << ".\n";
+	}
+	catch( Form::GradeTooHighException	&e ) {
+		std::cerr << e.what() << '\n';
+	}
+	catch( Form::GradeTooLowException	&e ) {
+		std::cerr << e.what() << '\n';
+	}
+}
 
 Bureaucrat::Bureaucrat( const std::string &nam , short num ) : name(nam), grade(num) {
 	if (grade < MAX_GRADE)
