@@ -11,7 +11,7 @@ int main( void ) {
 		std::cout << nikaah;
 
 		try {
-			Form		haram("Haram Contract", 150, 151);
+			Form	haram("Haram Contract", 150, 151);
 
 			std::cout << haram;
 			muslim.signForm(haram);
