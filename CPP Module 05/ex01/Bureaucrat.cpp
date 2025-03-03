@@ -11,6 +11,13 @@ Bureaucrat&	Bureaucrat::operator=( const Bureaucrat &obj ) {
 
 Bureaucrat::~Bureaucrat( void ) { }
 
+Bureaucrat::Bureaucrat( const std::string &nam , short num ) : name(nam), grade(num) {
+	if (grade < MAX_GRADE)
+		throw GradeTooHighException();
+	if (grade > MIN_GRADE)
+		throw GradeTooLowException();
+}
+
 void	Bureaucrat::signForm( Form &form ) {
 	try {
 		form.beSigned(*this);
@@ -24,13 +31,6 @@ void	Bureaucrat::signForm( Form &form ) {
 		std::cout << getName() << " couldn't sign " << form.getName()
 				  << " because " << e.what() << ".\n";
 	}
-}
-
-Bureaucrat::Bureaucrat( const std::string &nam , short num ) : name(nam), grade(num) {
-	if (grade < MAX_GRADE)
-		throw GradeTooHighException();
-	if (grade > MIN_GRADE)
-		throw GradeTooLowException();
 }
 
 const char*	Bureaucrat::GradeTooLowException::what() const throw() {

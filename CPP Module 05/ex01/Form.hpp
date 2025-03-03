@@ -4,6 +4,7 @@
 # include <iostream>
 # include <exception>
 # include <cstdlib>
+# include <iomanip>
 # include <ctime>
 
 # define MAX_GRADE 1
@@ -21,6 +22,7 @@ class Form
 		Form&				operator=( const Form & );
 		~Form( void );
 
+		Form( const std::string & , short, short );
 		std::string			getName( void ) const;
 		bool				getStatus( void ) const;
 		short				getSingGrade( void ) const;
@@ -42,7 +44,7 @@ class Form
 
 	private:
 		const std::string	name;
-		bool				approved;
+		bool				isSigned;
 		const short			signGrade;
 		const short			execGrade;
 };
