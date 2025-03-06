@@ -3,7 +3,7 @@
 int main( void ) {
 	try {
 		Bureaucrat	muslim("Muslim", 1);
-		Form		nikaah("Nikaah Contract", 4, 1);
+		AForm		nikaah("Nikaah Contract", 4, 1);
 
 		muslim.signForm(nikaah);
 
@@ -11,7 +11,7 @@ int main( void ) {
 		std::cout << nikaah;
 
 		try {
-			Form	haram("Haram Contract", 150, 151);
+			AForm	haram("Haram Contract", 150, 151);
 
 			std::cout << haram;
 			muslim.signForm(haram);

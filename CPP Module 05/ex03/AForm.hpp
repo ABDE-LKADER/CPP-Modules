@@ -5,6 +5,7 @@
 # include <exception>
 # include <cstdlib>
 # include <iomanip>
+# include <fstream>
 # include <ctime>
 
 # define MAX_GRADE 1
@@ -20,7 +21,7 @@ class AForm
 		AForm( void );
 		AForm( const AForm & );
 		AForm&				operator=( const AForm & );
-		~AForm( void );
+		virtual ~AForm( void );
 
 		AForm( const std::string & , short, short );
 		std::string			getName( void ) const;
@@ -29,6 +30,7 @@ class AForm
 		short				getExecGrade( void ) const;
 
 		void				beSigned( const Bureaucrat & );
+		virtual void		execute( Bureaucrat const & ) const = 0;
 
 		class GradeTooLowException : public std::exception {
 			public: const char*	what() const throw();
@@ -39,6 +41,10 @@ class AForm
 		};
 
 		class AlreadySignedException : public std::exception {
+			public: const char*	what() const throw();
+		};
+
+		class NotSignedException : public std::exception {
 			public: const char*	what() const throw();
 		};
 

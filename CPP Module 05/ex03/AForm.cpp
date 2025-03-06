@@ -1,4 +1,4 @@
-# include "Form.hpp"
+# include "AForm.hpp"
 # include "Bureaucrat.hpp"
 
 short	genGrade( void )
@@ -13,13 +13,13 @@ AForm::AForm( void ) : name("Blank"), isSigned(false),
 AForm::AForm( const AForm &obj ) : name(obj.name), isSigned(obj.isSigned),
 	signGrade(obj.signGrade), execGrade(obj.execGrade) { *this = obj; }
 
+AForm::~AForm( void ) { }
+
 AForm&	AForm::operator=( const AForm &obj ) {
 	if (this != &obj)
 		isSigned = obj.isSigned;
 	return (*this);
 }
-
-AForm::~AForm( void ) { }
 
 AForm::AForm( const std::string &nam , short sign, short exec ) : name(nam),
 	isSigned(false), signGrade(sign), execGrade(exec) {
@@ -49,6 +49,10 @@ const char*	AForm::AlreadySignedException::what() const throw() {
 	return ("is already signed!");
 }
 
+const char*	AForm::NotSignedException::what() const throw() {
+	return ("is not signed!");
+}
+
 std::ostream&	operator<<(std::ostream& out, const AForm& form) {
 	out << "\n\t+----------------------------------------------+" << "\n"
 		<< "\t|               Form Information               |" << "\n"
@@ -67,6 +71,7 @@ std::ostream&	operator<<(std::ostream& out, const AForm& form) {
 		<< "\t| " << std::setw(20) << std::right << form.getExecGrade() << " |" << "\n";
 
 	out << "\t+----------------------------------------------+" << "\n\n";
+
 	return (out);
 }
 
