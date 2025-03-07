@@ -13,9 +13,9 @@ int main( void ) {
 		Intern randomIntern;
 		AForm* random = randomIntern.makeForm("robotomy request", "Bender");
 
-		random->beSigned(muslim);
+		muslim.signForm(*random);
 		std::cout << *random;
-		random->execute(muslim);
+		muslim.executeForm(*random);
 
 		delete random;
 	}
