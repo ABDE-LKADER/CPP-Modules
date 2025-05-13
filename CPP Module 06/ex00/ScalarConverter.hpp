@@ -1,18 +1,22 @@
-#ifndef ScalarConverter_HPP
-# define ScalarConverter_HPP
+#ifndef SCALARCONVERTER_HPP
+# define SCALARCONVERTER_HPP
 
 # include <iostream>
+# include <sstream>
+# include <cstdlib>
+# include <iomanip>
+# include <limits>
+# include <stdexcept>
 
-class ScalarConverter
-{
-	public:
-		ScalarConverter( void );
-		ScalarConverter( const ScalarConverter & );
-		ScalarConverter			&operator=( const ScalarConverter & );
-		~ScalarConverter( void );
+# define RED     "\e[1;31m"
+# define YELLOW  "\e[1;33m"
+# define BOLD    "\e[38;5;252m"
+# define RESET   "\e[0m"
 
-	private:
-		std::string				attribute;
+enum etype { CHAR, INT, FLOAT, DOUBLE, NONE };
+
+class ScalarConverter {
+	public: static void	convert( const std::string & );
 };
 
 #endif
