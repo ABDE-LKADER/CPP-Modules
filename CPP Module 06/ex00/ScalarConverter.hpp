@@ -6,6 +6,7 @@
 # include <cstdlib>
 # include <iomanip>
 # include <limits>
+# include <cerrno>
 # include <stdexcept>
 
 # define RED     "\e[1;31m"
@@ -13,7 +14,7 @@
 # define BOLD    "\e[38;5;252m"
 # define RESET   "\e[0m"
 
-enum etype { CHAR, INT, FLOAT, DOUBLE, NONE };
+enum etype { CHAR, INT, FLOAT, DOUBLE };
 
 class ScalarConverter {
 	public: static void	convert( const std::string & );

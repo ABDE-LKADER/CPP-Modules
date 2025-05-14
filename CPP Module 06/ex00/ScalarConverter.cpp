@@ -5,15 +5,16 @@ static etype	detectType( const std::string &input ) {
 		throw std::invalid_argument("Empty " YELLOW "\"input\"");
 	if (input.length() == 1 && std::isdigit(input[0]) == false)
 		return CHAR;
-	if (input == "-inff" || input == "+inff" || input == "nanf")
+	if (input == "-inff" || input == "+inff"
+			|| input == "inff" || input == "nanf")
 		return FLOAT;
-	if (input == "-inf" || input == "+inf" || input == "nan")
+	if (input == "-inf" || input == "+inf"
+			|| input == "inf" || input == "nan")
 		return DOUBLE;
-	return NONE;
+	return INT;
 }
 
 static void	convert_char( int alpha ) {
-	std::cout << "" << std::endl;
 	if (alpha < 0 || alpha > 127)
 		std::cout << "char: Impossible";
 	else if (isprint(alpha))
@@ -23,16 +24,25 @@ static void	convert_char( int alpha ) {
 	std::cout << std::endl;
 }
 
+static void	convert_int( double num ) {
+	if (num >= static_cast<double>(std::numeric_limits<int>::min()) &&
+		num <= static_cast<double>(std::numeric_limits<int>::max()))
+		std::cout << "int: " << static_cast<int>(num) << std::endl;
+	else
+		std::cout << "int: impossible" << std::endl;
+}
+
 static void	convert_float( const std::string &input ) {
 	std::stringstream	inputStream(input);
 	float				num;
 	
 	inputStream >> num;
-	
-	if (inputStream.fail())
-		throw std::runtime_error("Invalid float format");
 
-	// std::cout << std::fixed << std::setprecision(1);
+	if (inputStream.fail())
+		throw std::runtime_error("Float value out of range.");
+
+	convert_char(static_cast<int>(num));
+	convert_int(static_cast<float>(num));
 	std::cout << "float: " << num << "f" << std::endl;
 	std::cout << "double: " << static_cast<double>(num) << std::endl;
 
@@ -59,15 +69,23 @@ void	ScalarConverter::convert( const std::string &input ) {
 	if (endptr && *endptr != '\0' && !(endptr[0] == 'f' && endptr[1] == '\0'))
 		throw std::runtime_error("Invalid scalar format!");
 
-	convert_char(static_cast<int>(num));
-	if (num >= static_cast<double>(std::numeric_limits<int>::min()) &&
-		num <= static_cast<double>(std::numeric_limits<int>::max()))
-		std::cout << "int: " << static_cast<int>(num) << std::endl;
-	else
-		std::cout << "int: impossible" << std::endl;
-
-	if (*endptr == 'f')
+	if (*endptr == 'f' && type == INT)
 		convert_float(input);
-	// if (input.find(".") != std::string::npos)
-	// 	std::cout << num << std::endl;
+		
+	if (input.find(".") != std::string::npos || type == DOUBLE) {
+		if (errno == ERANGE)
+			throw std::runtime_error("Double value out of range.");
+		convert_char(static_cast<int>(num)), convert_int(num);
+		std::cout << "float: " << static_cast<float>(num) << "f" << std::endl;
+		std::cout << "double: " << num << std::endl;
+		return ;
+	}
+
+	if (type != FLOAT && (num < static_cast<double>(std::numeric_limits<int>::min())
+		|| num > static_cast<double>(std::numeric_limits<int>::max())))
+			throw std::runtime_error("Int value out of range.");
+
+	convert_char(static_cast<int>(num)), convert_int(num);
+	std::cout << "float: " << static_cast<float>(num) << "f" << std::endl;
+	std::cout << "double: " << num << std::endl;
 }
