@@ -78,12 +78,10 @@ void	ScalarConverter::convert( const std::string &input ) {
 	std::cout << std::fixed << std::setprecision(1);
 	
 	if (type == CHAR) {
-		char	alpha = static_cast<char>(input[0]);
-
-		convertChar(alpha);
-		std::cout << "int: " << static_cast<int>(alpha) << std::endl;
-		std::cout << "float: " << static_cast<float>(alpha) << "f" << std::endl;
-		std::cout << "double: " << static_cast<double>(alpha) << std::endl;
+		convertChar(input[0]);
+		std::cout << "int: " << static_cast<int>(input[0]) << std::endl;
+		std::cout << "float: " << static_cast<float>(input[0]) << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(input[0]) << std::endl;
 		return ;
 	}
 

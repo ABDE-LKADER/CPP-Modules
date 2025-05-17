@@ -1,11 +1,11 @@
-NAME		=		ScalarConverter
+NAME		=		Convert
 
 SRCS		=		main.cpp ScalarConverter.cpp
 OBJS		=		$(SRCS:.cpp=.o)
 
 HEADERS		=		ScalarConverter.hpp
 
-CC			=		clang++
+CC			=		c++
 FLAGS		=		-Wall -Wextra -Werror -std=c++98
 RM			=		rm -fr
 
