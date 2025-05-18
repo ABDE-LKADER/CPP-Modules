@@ -1,9 +1,9 @@
-NAME		=		ScalarConverter
+NAME		=		Identify
 
-SRCS		=		main.cpp ScalarConverter.cpp
+SRCS		=		main.cpp Generate.cpp Identify.cpp
 OBJS		=		$(SRCS:.cpp=.o)
 
-HEADERS		=		ScalarConverter.hpp
+HEADERS		=		Base.hpp
 
 CC			=		c++
 FLAGS		=		-Wall -Wextra -Werror -std=c++98
