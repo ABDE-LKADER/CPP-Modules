@@ -8,4 +8,6 @@ int main( void ) {
 
 	std::cout << "<Reference> Identify: ";
 	identify(*base);
+
+	delete base;
 }
