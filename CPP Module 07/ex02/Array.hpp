@@ -2,7 +2,11 @@
 # define Array_HPP
 
 # include <iostream>
+# include <stdexcept>
+# include <cstdlib>
+# include <ctime>
 
+template <typename T>
 class Array
 {
 	public:
@@ -11,8 +15,17 @@ class Array
 		Array			&operator=( const Array & );
 		~Array( void );
 
+		Array( unsigned int );
+
+		T				&operator[]( int );
+		const T			&operator[]( int ) const;
+		unsigned int	size( void ) const;
+
 	private:
-		std::string				attribute;
+		T				*_array;
+		unsigned int	_size;
 };
+
+# include "Array.tpp"
 
 #endif
