@@ -5,7 +5,7 @@ OBJS		=		$(SRCS:.cpp=.o)
 
 HEADERS		=		Span.hpp
 
-CC			=		clang++
+CC			=		c++
 FLAGS		=		-Wall -Wextra -Werror -std=c++98
 RM			=		rm -fr
 
