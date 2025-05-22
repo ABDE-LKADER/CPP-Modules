@@ -1,11 +1,11 @@
-NAME		=		ArrayTemplate
+NAME		=		Array
 
 SRCS		=		main.cpp
 OBJS		=		$(SRCS:.cpp=.o)
 
 HEADERS		=		Array.hpp Array.tpp
 
-CC			=		clang++
+CC			=		c++
 FLAGS		=		-Wall -Wextra -Werror -std=c++98
 RM			=		rm -fr
 
