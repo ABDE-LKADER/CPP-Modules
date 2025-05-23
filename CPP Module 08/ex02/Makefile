@@ -5,7 +5,7 @@ OBJS		=		$(SRCS:.cpp=.o)
 
 HEADERS		=		MutantStack.hpp MutantStack.tpp
 
-CC			=		clang++
+CC			=		c++
 FLAGS		=		-Wall -Wextra -Werror -std=c++98
 RM			=		rm -fr
 
