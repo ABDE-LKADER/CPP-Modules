@@ -76,7 +76,7 @@ void	ScalarConverter::convert( const std::string &input ) {
 	etype type = detectType(input);
 
 	std::cout << std::fixed << std::setprecision(1);
-	
+
 	if (type == CHAR) {
 		convertChar(input[0]);
 		std::cout << "int: " << static_cast<int>(input[0]) << std::endl;
@@ -88,7 +88,8 @@ void	ScalarConverter::convert( const std::string &input ) {
 	char	*endptr;
 	double	num = std::strtod(input.c_str(), &endptr);
 
-	if (endptr && *endptr != '\0' && !(endptr[0] == 'f' && endptr[1] == '\0'))
+	if (endptr && *endptr != '\0' && !(input.find(".") != std::string::npos
+			&& endptr[0] == 'f' && endptr[1] == '\0'))
 		throw std::runtime_error("Invalid scalar format!");
 
 	if (*endptr == 'f' && type == OTHER)
