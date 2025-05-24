@@ -1,4 +1,4 @@
-NAME		=		BitcoinExchange
+NAME		=		btc
 
 SRCS		=		main.cpp
 OBJS		=		$(SRCS:.cpp=.o)
