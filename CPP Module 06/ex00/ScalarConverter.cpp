@@ -68,8 +68,6 @@ static void	convertFloat( const std::string &input ) {
 
 	std::cout << "float: " << num << "f" << std::endl;
 	std::cout << "double: " << static_cast<double>(num) << std::endl;
-
-	std::exit(EXIT_SUCCESS);
 }
 
 void	ScalarConverter::convert( const std::string &input ) {
@@ -85,6 +83,7 @@ void	ScalarConverter::convert( const std::string &input ) {
 		return ;
 	}
 
+	errno = 0;
 	char	*endptr;
 	double	num = std::strtod(input.c_str(), &endptr);
 
@@ -92,8 +91,10 @@ void	ScalarConverter::convert( const std::string &input ) {
 			&& endptr[0] == 'f' && endptr[1] == '\0'))
 		throw std::runtime_error("Invalid scalar format!");
 
-	if (*endptr == 'f' && type == OTHER)
+	if (*endptr == 'f' && type == OTHER) {
 		convertFloat(input);
+		return ;
+	}
 
 	if (input.find(".") != std::string::npos || type == DOUBLE || type == FLOAT) {
 		if (errno == ERANGE)
