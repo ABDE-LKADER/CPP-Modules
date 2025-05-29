@@ -5,7 +5,7 @@
 # include <stdint.h>
 
 struct Data {
-	short	num;
+	short	value;
 };
 
 class Serializer
