@@ -89,3 +89,19 @@ Once you have a good grasp of the basics and intermediate concepts, delve into m
 - [The Ultimate C++ Series](https://codewithmosh.com/p/ultimate-c-plus-plus-series) - by Code With Mosh
 
 ---
+## +++++++
+## Type Of Conversion
+
+# Value Conversion: **static_cast<float>(x);**
+: Used For Buil-in Types Conversion, UP Casting Class, Compile Time Cast And More Safe...
+
+# Bit-level Conversion: **reinterpret_cast<float*>(p);**
+: Used In bits conversion between address, just cast the pointer or reference not change in value, compile time cast But more dangerous ...
+
+# Remove Const: **const_cast<int*>(p);**
+: Used just for remove the const operator or keep it, no Change in the data, is a compite time, but not safe to remove const from vars ...
+
+# Safe RTTI check: **dynamic_cast<Derived*>(base);**
+: Used for Down Casting From The Base To Derived Class, It's Use RTTI To Check Is The Cast Valid Or Not, And Check the Vtable, It's Made Just For Class And Exactly in Polimorphisme, Run Time Cast And It's throw exceptions in reference and null pointer in pointers ...
+    -> std::type_info: Contain Class Name Of the class ... Type id ...  
+    : RTTI: Run-Time Type Information is a runtime mechanism that store metadata for types in Vtable ...
