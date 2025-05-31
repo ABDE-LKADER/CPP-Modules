@@ -1,5 +1,5 @@
-#ifndef Array_HPP
-# define Array_HPP
+#ifndef ARRAY_HPP
+# define ARRAY_HPP
 
 # include <iostream>
 # include <stdexcept>
