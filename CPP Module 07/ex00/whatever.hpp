@@ -4,7 +4,7 @@
 # include <iostream>
 
 template <typename T>
-void	swap( T &first, T& second ) {
+void	swap( T &first, T &second ) {
 	T	temp = first;
 
 	first = second;
@@ -12,13 +12,13 @@ void	swap( T &first, T& second ) {
 }
 
 template <typename T>
-T	min( const T &first, const T& second ) {
-	return ( first <= second ? first : second);
+T	min( const T &first, const T &second ) {
+	return ( first < second ? first : second);
 }
 
 template <typename T>
-T	max( const T &first, const T& second ) {
-	return ( first >= second ? first : second);
+T	max( const T &first, const T &second ) {
+	return ( first > second ? first : second);
 }
 
 #endif

@@ -8,9 +8,9 @@ void	printIt( const T &value ) {
 	std::cout << ">    " << value << std::endl;
 }
 
-template <typename T>
-void	iter( T* array, int length, void (*func)( const T & ) ) {
-	for (int index = 0; index < length; index++) {
+template <typename T, typename FUNC>
+void	iter( T* array, size_t length, FUNC func ) {
+	for (size_t index = 0; index < length; index++) {
 		func(array[index]);
 	}
 }
