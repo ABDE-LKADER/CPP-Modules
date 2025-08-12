@@ -16,8 +16,8 @@ BitcoinExchange::BitcoinExchange( void ) {
 		float						value;
 		short						year, month, day;
 
-		streamLine >> year >> garb >> month >> garb >> day >> garb >> value;
-		database[(year * 10000) + (month * 100) + day] = value;
+		if (streamLine >> year >> garb >> month >> garb >> day >> garb >> value)
+			database[(year * 10000) + (month * 100) + day] = value;
 	}
 
 	std::cout << "Database ... loaded." << std::endl;
@@ -43,11 +43,8 @@ int	BitcoinExchange::processDate( const std::string& dateStr ) {
 			|| dash_1 != '-' || dash_2 != '-' || !dateStream.eof())
 		throw std::runtime_error("Error: bad input => " + dateStr);
 
-	if ((!database.empty() && year < database.begin()->first / 10000))
-		throw std::runtime_error("Error: bad input => " + dateStr);
-
 	if (month < 1 || month > 12)
-		throw std::runtime_error("Error: bad input => " + dateStr);
+		throw std::runtime_error("Error: Invalid given month.");
 
 	if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
 		daysInMonth[2] = 29;
@@ -90,16 +87,16 @@ void	BitcoinExchange::processLine( const std::string& line ) {
 
 	std::map<int, float>::iterator	it = database.lower_bound(dateKey);
 
-	if (dateKey < it->first)
+	if (it == database.begin() && dateKey != it->first)
 		throw std::runtime_error("Error: No data available for date => " + dateStr);
-	if (it != database.end() || dateKey != it->first) it--;
+	if (it == database.end() || dateKey != it->first) it--;
 
 	std::cout << dateStr << " => " << value << " = " << (value * it->second) << std::endl;
 }
 
 void	BitcoinExchange::processToExchange( const std::string& filename ) {
 	std::string					line;
-	std::ifstream				inFile(filename);
+	std::ifstream				inFile(filename.c_str());
 
 	if (inFile.is_open() == false)
 		throw std::runtime_error("Error: could not open input file.");
