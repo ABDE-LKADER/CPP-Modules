@@ -4,9 +4,8 @@ BitcoinExchange::BitcoinExchange( void ) {
 	std::string					line;
 	std::ifstream				dataFile("data.csv");
 
-	if (dataFile.is_open() == false) {
+	if (dataFile.is_open() == false)
 		throw std::runtime_error("Error: could not open database file.");
-	}
 
 	getline(dataFile, line);
 	while (getline(dataFile, line)) {
@@ -16,8 +15,8 @@ BitcoinExchange::BitcoinExchange( void ) {
 		float						value;
 		short						year, month, day;
 
-		if (streamLine >> year >> garb >> month >> garb >> day >> garb >> value)
-			database[(year * 10000) + (month * 100) + day] = value;
+		streamLine >> year >> garb >> month >> garb >> day >> garb >> value;
+		database[(year * 10000) + (month * 100) + day] = value;
 	}
 
 	std::cout << "Database ... loaded." << std::endl;
@@ -26,7 +25,8 @@ BitcoinExchange::BitcoinExchange( void ) {
 BitcoinExchange::BitcoinExchange( const BitcoinExchange &other ) { *this = other; }
 
 BitcoinExchange	&BitcoinExchange::operator=( const BitcoinExchange &other ) {
-	if (&other != this) { database = other.database; }
+	if (&other != this)
+		database = other.database;
 	return *this;
 }
 
@@ -49,9 +49,8 @@ int	BitcoinExchange::processDate( const std::string& dateStr ) {
 	if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
 		daysInMonth[2] = 29;
 
-	if (day < 1 || day > daysInMonth[month]) {
+	if (day < 1 || day > daysInMonth[month])
 		throw std::runtime_error("Error: Invalid day for the given month and year.");
-	}
 
 	return ((year * 10000) + (month * 100) + day);
 }
@@ -75,9 +74,8 @@ void	BitcoinExchange::processLine( const std::string& line ) {
 	std::string					separator = " | ";
 
 	size_t sepPos = line.find(separator);
-	if (sepPos == std::string::npos) {
+	if (sepPos == std::string::npos)
 		throw std::runtime_error("Error: bad input => " + line);
-	}
 
 	std::string					dateStr = line.substr(0, sepPos);
 	std::string					valueStr = line.substr(sepPos + separator.length());
@@ -107,7 +105,8 @@ void	BitcoinExchange::processToExchange( const std::string& filename ) {
 
 	while (getline(inFile, line)) {
 		try {
-			processLine(line);
+			if (!line.empty())
+				processLine(line);
 		}
 		catch(const std::exception& e) {
 			std::cerr << e.what() << std::endl;
