@@ -17,8 +17,8 @@ int		RPN::calculate( std::istringstream &expression ) {
 	std::string				token;
 
 	while (expression >> token) {
-		if (token.length() == 1 && std::isdigit(*token.c_str())) {
-			operand.push(*token.c_str() - 48);
+		if (token.length() == 1 && std::isdigit(token[0])) {
+			operand.push(token[0] - '0');
 			continue ;
 		}
 		if (token == "+" || token == "-" || token == "*" || token == "/") {
@@ -32,7 +32,7 @@ int		RPN::calculate( std::istringstream &expression ) {
 			else if (token == "-") operand.push(left - right);
 			else if (token == "*") operand.push(left * right);
 			else if (token == "/" && right != 0) operand.push(left / right);
-			else throw std::runtime_error("Error: Division by zero.");
+			else throw std::runtime_error("Error");
 
 			continue ;
 		}
