@@ -1,9 +1,9 @@
-NAME		=		EasyFind
+NAME		=		RPN
 
-SRCS		=		main.cpp
+SRCS		=		main.cpp RPN.cpp
 OBJS		=		$(SRCS:.cpp=.o)
 
-HEADERS		=		easyfind.hpp easyfind.tpp
+HEADERS		=		RPN.hpp
 
 CC			=		c++
 FLAGS		=		-Wall -Wextra -Werror -std=c++98
