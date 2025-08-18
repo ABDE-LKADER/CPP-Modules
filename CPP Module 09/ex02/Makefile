@@ -1,12 +1,12 @@
-NAME		=		EasyFind
+NAME		=		PmergeMe
 
-SRCS		=		main.cpp
+SRCS		=		main.cpp PmergeMe.cpp
 OBJS		=		$(SRCS:.cpp=.o)
 
-HEADERS		=		easyfind.hpp easyfind.tpp
+HEADERS		=		PmergeMe.hpp
 
 CC			=		c++
-FLAGS		=		-Wall -Wextra -Werror -std=c++98
+FLAGS		=		-Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 RM			=		rm -fr
 
 all:	$(NAME)
