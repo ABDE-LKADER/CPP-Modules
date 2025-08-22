@@ -20,7 +20,7 @@ int main( int ac, char **av ) {
 		numStream.clear();
 	}
 
-	PmergeMe			sorter(initSequence);
+	PmergeMe		sorter(initSequence);
 
 	return EXIT_SUCCESS;
 }
