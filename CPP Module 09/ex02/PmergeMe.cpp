@@ -1,111 +1,134 @@
 # include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe( void ) : level(1), pairSize(1), logCounter(0) { }
+size_t		PmergeMe::totalComparisons = 0;
 
-PmergeMe::PmergeMe( const PmergeMe &other ) { *this = other; }
+int	PmergeMe::J( int n ) {
+	if (n == 0) return 0;
+	if (n == 1) return 1;
 
-PmergeMe	&PmergeMe::operator=( const PmergeMe &other ) {
-	if (this != &other)
-		level = other.level;
-	return *this;
+	return (J(n - 1) + 2 * J(n - 2));
 }
 
-PmergeMe::~PmergeMe( void ) { }
+void	PmergeMe::resetTotalComparisons( void ) { totalComparisons = 0; }
 
-PmergeMe::PmergeMe( vec &container ) : level(1), pairSize(1), logCounter(0) {
-	std::cout << "Size: " << container.size() << " --- Numbers: ";
-	for (size_t an = 0; an < container.size(); an++) {
-		std::cout << container[an][0];
-		if (an != container.size() - 1) std::cout << " | ";
-	}
-	std::cout << std::endl;
-	std::cout << "-----------------------------------------------" << std::endl;
+size_t	PmergeMe::getTotalComparisons( void ) { return totalComparisons; }
 
-	mergeInsertSort(container);
-}
+void	PmergeMe::mergeInsertSort( vecMatrix &container ) {
 
-// JUST FOR TEST
-void	printContainerState(const std::string& label, const std::vector< std::vector<int> >& container) {
-	std::cout << label << std::endl;
-	for (size_t i = 0; i < container.size(); ++i) {
-		std::cout << "  index[" << i << "]: { ";
-		for (size_t j = 0; j < container[i].size(); ++j) {
-			std::cout << container[i][j] << " ";
-		}
-		std::cout << "}" << std::endl;
-	}
-	std::cout << "------------------------" << std::endl;
-}
-
-struct HeadLess {
-	bool operator()(const std::vector<int>& a, const std::vector<int>& b) const {
-		return a.front() < b.front(); // compare by head
-	}
-};
-
-void JacobSthal(std::vector< std::vector<int> >& container,
-				 const std::vector<int>& loser)
-{
-	std::vector< std::vector<int> >::iterator pos =
-		std::upper_bound(container.begin(), container.end(), loser, HeadLess());
-
-	container.insert(pos, loser);
-}
-// TESTING
-
-void	PmergeMe::mergeInsertSort( vec &container ) {
-	// Divide Into Pairs, Sort Pairs | Make The Biggest Pair Possible
-
-	if (container.size() <= 1) {
-		std::cout << "\n--> Base Case Reached. Returning.\n" << std::endl;
+	if (container.size() <= 1)
 		return;
+
+	vec				leftover;
+	int				hasLeftover;
+
+	if ((hasLeftover = (container.size() % 2))) {
+		leftover = vec(container.back().begin(),
+			container.back().end());
+		container.pop_back();
 	}
-
-	std::cout << "--- Entering Recursion Level " << level << " ---" << std::endl;
-	std::cout << "Input List: ";
-
-	for (size_t an = 0; an < container.size(); an++)
-		std::cout << container[an][0] << " ";
-	std::cout << std::endl;
-
-	// size_t				size = container.size();
-	// if ((hasLeftover = size % 2))
-	// 	size -= 1;
 
 	for (size_t an = 0; an < container.size() - 1; an++) {
-		if (container[an].size() != container[an + 1].size())
-			return ;
-		if (container[an][0] < container[an + 1][0]) {
+		if (headLess(container[an], container[an + 1]))
 			std::swap(container[an], container[an + 1]);
-			logCounter++;
-		}
-		container[an].insert(container[an].end(), container[an + 1].begin(), container[an + 1].end());
+		container[an].insert(container[an].end(), container[an + 1].begin(),
+			container[an + 1].end());
 		container.erase(container.begin() + an + 1);
 	}
-	printContainerState("Before", container);
 
-	level++;
 	mergeInsertSort(container);
-	level--;
 
-	pairSize = container[0].size() / 2;
-	std::cout << "After Recurcive ------ Size: " << container.size()
-		<< ", Level: " << level << " ------- Pair Size: " << pairSize << std::endl;
+	vecMatrix		losers;
+	int				pairSize = container.front().size() / 2;
 
-	// Create The Main And The Pend | In Level 1
-	// Insert Elements From The Pend To The Main Chain
-
-	std::cout << "Winners, Losers" << std::endl;
-	for (vec::iterator pos = container.begin(); pos != container.end(); ++pos) {
-		if (pos->size() > static_cast<size_t>(pairSize)) {
-			std::vector<int>	loser(pos->begin() + pairSize, pos->end());
-			pos->erase(pos->begin() + pairSize, pos->end());
-			JacobSthal(container, loser);
-		}
+	for (vecMatrix::iterator pos = container.begin(); pos != container.end(); ++pos) {
+		vec		loser(pos->begin() + pairSize, pos->end());
+		pos->erase(pos->begin() + pairSize, pos->end());
+		losers.push_back(loser);
 	}
-	std::cout << std::endl;
 
-	printContainerState("After", container);
-	std::cout << "\t----------- Container Size: " << container.size()
-		<< " ----------- Compare Number: " << logCounter << std::endl << std::endl;
+	container.insert(container.begin(), losers.front());
+
+	if (hasLeftover)
+		losers.push_back(leftover);
+
+	size_t			add = 0;
+	size_t			seq = 2;
+
+	for (size_t pos = 0; pos < losers.size(); seq++) {
+		size_t		prev = J(seq);
+		size_t		next = J(seq + 1);
+
+		for (size_t endIdx = std::min(next, losers.size()); endIdx > prev; endIdx--) {
+			container.insert(std::lower_bound(container.begin(), container.begin() + endIdx
+				+ add, losers[endIdx - 1], headLess<vec>), losers[endIdx - 1]);
+			add++;
+		}
+		pos = next;
+	}
+}
+
+void	PmergeMe::mergeInsertSort( listMatrix &container ) {
+
+	if (container.size() <= 1)
+		return;
+
+	list			leftover;
+	int				hasLeftover;
+
+	if ((hasLeftover = (container.size() % 2))) {
+		leftover = list(container.back().begin(),
+			container.back().end());
+		container.pop_back();
+	}
+
+	for (listMatrix::iterator an = container.begin(); an != container.end(); an++) {
+		listMatrix::iterator		next = an;
+
+		++next;
+		if (headLess(*an, *next))
+			std::swap(*an, *next);
+		an->insert(an->end(), next->begin(), next->end());
+		container.erase(next);
+	}
+
+	mergeInsertSort(container);
+
+	listMatrix		losers;
+	int				pairSize = container.front().size() / 2;
+
+	for (listMatrix::iterator pos = container.begin(); pos != container.end(); ++pos) {
+		list::iterator		pairPos = pos->begin();
+		std::advance(pairPos, pairSize);
+
+		list		loser(pairPos, pos->end());
+		
+		pos->erase(pairPos, pos->end());
+		losers.push_back(loser);
+	}
+
+	container.insert(container.begin(), losers.front());
+
+	if (hasLeftover)
+		losers.push_back(leftover);
+
+	size_t			add = 0;
+	size_t			seq = 2;
+
+	for (size_t pos = 0; pos < losers.size(); seq++) {
+		size_t		prev = J(seq);
+		size_t		next = J(seq + 1);
+
+		for (size_t endIdx = std::min(next, losers.size()); endIdx > prev; endIdx--) {
+			listMatrix::iterator		endPos = container.begin();
+			std::advance(endPos, endIdx + add);
+
+			listMatrix::iterator		loserIt = losers.begin();
+			std::advance(loserIt, endIdx - 1);
+
+			container.insert(std::lower_bound(container.begin(), endPos, *loserIt,
+				headLess<list>), *loserIt);
+			add++;
+		}
+		pos = next;
+	}
 }
