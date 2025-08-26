@@ -1,6 +1,6 @@
 # include "PmergeMe.hpp"
 
-size_t		PmergeMe::totalComparisons = 0;
+size_t	PmergeMe::totalComparisons = 0;
 
 int	PmergeMe::J( int n ) {
 	if (n == 0) return 0;
@@ -9,9 +9,12 @@ int	PmergeMe::J( int n ) {
 	return (J(n - 1) + 2 * J(n - 2));
 }
 
-void	PmergeMe::resetTotalComparisons( void ) { totalComparisons = 0; }
+double	PmergeMe::getMicroseconds( void ) {
+	t_time			time;
 
-size_t	PmergeMe::getTotalComparisons( void ) { return totalComparisons; }
+	gettimeofday(&time, NULL);
+	return (time.tv_sec + time.tv_usec / 1000000.0);
+}
 
 void	PmergeMe::mergeInsertSort( vecMatrix &container ) {
 
