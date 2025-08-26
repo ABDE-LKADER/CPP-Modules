@@ -2,6 +2,10 @@
 
 size_t	PmergeMe::totalComparisons = 0;
 
+std::string	PmergeMe::containerType( listMatrix & ) { return ("std::list  "); }
+
+std::string	PmergeMe::containerType( vecMatrix & ) { return ("std::vector"); }
+
 int	PmergeMe::J( int n ) {
 	if (n == 0) return 0;
 	if (n == 1) return 1;

@@ -35,7 +35,10 @@ class PmergeMe
 		template < typename Container >
 			static void		printContainerState( const std::string & , const Container & );
 
-		static double		getMicroseconds(void);
+		static double		getMicroseconds( void );
+
+		static std::string	containerType( vecMatrix & );
+		static std::string	containerType( listMatrix & );
 
 	private:
 		PmergeMe( void );
@@ -72,17 +75,17 @@ template < typename Container >
 		totalComparisons = 0;
 
 		if (print == true)
-			PmergeMe::printContainerState("Before:  ", container);
+			printContainerState("Before:  ", container);
 
-		double		startTime = PmergeMe::getMicroseconds();
-		PmergeMe::mergeInsertSort(container);
-		double		duration = PmergeMe::getMicroseconds() - startTime;
+		double		startTime = getMicroseconds();
+		mergeInsertSort(container);
+		double		duration = getMicroseconds() - startTime;
 
 		if (print == true)
-			PmergeMe::printContainerState("After:   ", container);
+			printContainerState("After:   ", container);
 
 		std::cout << "Time to process a range of " << BOLD CYAN << container.size() << RESET
-				  << " elements with std::vector : " << std::fixed << std::setprecision(5)
+				  << " elements with " << containerType(container) << " : " << std::fixed << std::setprecision(5)
 				  << BOLD CYAN << duration << RESET << " us" << std::endl;
 	}
 

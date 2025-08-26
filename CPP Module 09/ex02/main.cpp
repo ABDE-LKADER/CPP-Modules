@@ -18,8 +18,8 @@ int main( int ac, char **av ) {
 			std::cout << RED BOLD << "Error\n" << RESET;
 			return EXIT_FAILURE;
 		}
-		numbersV.push_back(std::vector<int>(1, num));
-		numbersL.push_back(std::list<int>(1, num));
+		numbersV.push_back(vec(1, num));
+		numbersL.push_back(list(1, num));
 		numStream.clear();
 	}
 
